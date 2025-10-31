@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmation | QuickCare</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <h1>QuickCare</h1>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="book.html">Book Another</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="confirmation-card">
+          <div class="success-icon">✓</div>
+          <h2>Appointment Confirmed!</h2>
+          <div id="confirmation-details"></div>
+          <a href="index.html" class="btn">Back to Home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 QuickCare Clinic</p>
+  </footer>
+
+  <script>
+    const details = JSON.parse(localStorage.getItem("appointment"));
+    if (details) {
+      document.getElementById("confirmation-details").innerHTML = `
+        <p class="thank-you">Thank you, <strong>${details.name}</strong>!</p>
+        <p>Your appointment for <strong>${details.service}</strong> is booked on <strong>${details.date}</strong>.</p>
+        <p>Confirmation sent to: <strong>${details.email}</strong></p>
+      `;
+    }
+  </script>
+</body>
+</html>
